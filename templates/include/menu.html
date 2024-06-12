@@ -1,0 +1,28 @@
+
+
+{% set navigation = [
+ {'url': 'about', 'display_name': 'About Me'},
+ {'url': 'gallery', 'display_name': 'Gallery'},
+ {'url': 'contact', 'display_name': 'Contact'}
+] -%}
+
+{% set active_page = active_page|default('index') -%}
+
+<header class="bg-gray-800 text-white py-4">
+    <div class="container">
+        <h1 class="text-center"><a href="/" class="text-white text-decoration-none">Mikalai Holias</a></h1>
+    </div>
+</header>
+
+<nav class="d-flex justify-content-center py-3">
+  <ul class="nav nav-pills">
+    {% for item in navigation %}
+         <li class="nav-item">
+             <a class="nav-link {% if item['url'] == active_page %} active {% endif %}" href="{{
+            url_for(item['url']) }}">{{ item['display_name'] }}</a>
+         </li>
+     {% endfor %}
+  </ul>
+</nav>
+
+
